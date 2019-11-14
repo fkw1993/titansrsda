@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<script src="../js/common/common.js?v=1.0.4" charset="utf-8"></script>
+<link rel="stylesheet" href="../js/lay-module/dtree/dtree.css">
+<link rel="stylesheet" href="../js/lay-module/dtree/font/dtreefont.css">
+<style>
+    /* zdy主题风格*/
+    .dtree-zdy-item-this{background-color: #c2c2c2!important;} /* 当前选中行样式*/
+    .dtree-zdy-item:hover{background-color: #f2f2f2!important;} /* 行悬停样式*/
+    .dtree-zdy-item cite{font-size:14px!important;} /* 行文字样式*/
+    .dtree-zdy-item:hover cite{color:#5FB878!important;} /* 行悬停文字样式*/
+    .dtree-zdy-dtreefont{font-size: 18px!important;} /* 一级图标、二级图标、复选框样式*/
+    .dtree-zdy-ficon{color:#2F4056!important;}  /*一级图标特定样式*/
+    .dtree-zdy-icon{color:#2F4056!important;}  /*二级图标特定样式*/
+    .dtree-zdy-checkbox:hover{color:#5FB878!important;}  /*复选框悬停样式*/
+    .dtree-zdy-choose{color:#5FB878!important;} /* 复选框选中样式*/
+</style>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <!-- 左树 -->
+        <div class="layui-col-sm12 layui-col-md4 layui-col-lg3">
+            <div class="layui-card">
+                <div class="layui-card-body mini-bar" id="ltTree">
+
+                </div>
+            </div>
+        </div>
+        <!-- 右表 -->
+        <div class="layui-col-sm12 layui-col-md8 layui-col-lg9">
+            <div class="layui-card">
+                <div class="layui-card-body">
+
+                    <div class="layui-form toolbar">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label w-auto">搜索：</label>
+                                <div class="layui-input-inline mr0">
+                                    <input id="edtSearch" class="layui-input" type="text" placeholder="输入关键字"/>
+                                </div>
+                            </div>
+                            <div class="layui-inline" >
+                                <button class="layui-btn icon-btn" id="btnSearchByCode">
+                                    <i class="layui-icon">&#xe615;</i>字典编码搜索
+                                </button>
+                                <button class="layui-btn icon-btn" id="btnSearchByName">
+                                    <i class="layui-icon">&#xe615;</i>字典值搜索
+                                </button>
+                            </div>
+                            <div class="layui-inline">
+
+                                <button id="btnAdd" class="layui-btn icon-btn"  >
+                                    <i class="layui-icon">&#xe654;</i>新增
+                                </button>
+                                <button id="btnDel" class="layui-btn layui-btn-danger icon-btn"  >
+                                    <i class="layui-icon">&#xe640;</i>删除
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="layui-table" id="rtTable" lay-filter="rtTable"></table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+ 
+
+
+<script>
+
+    layui.use(['layer', 'form', 'table', 'util', 'dtree'], function () {
+        var $ = layui.jquery;
+        var layer = layui.layer;
+        var form = layui.form;
+        var table = layui.table;
+        var util = layui.util;
+        var dtree = layui.dtree;
+        // 渲染表格
+        var ins1 = function (pid,cloumn,Keyword){
+            table.render({
+                elem: '#rtTable',
+                url: '/dictionary/dictionaryInfoByParentId',
+                page: true,
+                cellMinWidth: 100,
+                cols: [[
+                    {type: 'checkbox'},
+                    {field: 'dictCode', align: 'center', sort: true, title: '字典编码'},
+                    {field: 'dictName', align: 'center', sort: true, title: '字典值'},
+                    {field: 'dictOrder', align: 'center', sort: true, title: '字典序列'},
+                    {field: 'dictDescription', align: 'center', sort: true, title: '字典备注'},
+                    {align: 'center', align: 'center', toolbar: '#user-table-bar', title: '操作', minWidth: 120}
+                ]],
+                where: {nodeId: pid,Keyword:Keyword,cloumn:cloumn}
+            });
+        }
+        // 监听工具条
+        table.on('tool(rtTable)', function (obj) {
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值
+
+            if (layEvent === 'edit') { // 查看
+                showEditModel(data);
+                //layer.msg('点击了修改');
+            } else if (layEvent === 'del') { // 删除
+                var deleteData = new Array();
+                deleteData.push(data.dictId);
+                deleteDictionary(deleteData);
+            }
+        });
+
+        // 增加
+        $('#btnAdd').click(function () {
+            var param = dtree.getNowParam(dictTree);
+            if (param.context) {
+            } else {
+                layer.msg('请选择一个节点', {icon: 2});
+            }
+            showEditModel();
+        });
+        // 批量删除
+        $('#btnDel').click(function () {
+            var checkRows = table.checkStatus('rtTable');
+            if (checkRows.data.length == 0) {
+                layer.msg('请选择要删除的数据', {icon: 2});
+            } else {
+                var deletedata = [];
+                for(var i=0;i<checkRows.data.length;i++){
+                    deletedata.push(checkRows.data[i].dictId);
+                }
+                deleteDictionary(deletedata);
+            }
+        });
+
+        // 搜索按钮点击事件
+        $('#btnSearchByCode').click(function () {
+            var value = $('#edtSearch').val();
+            ins1("","dict_code",value);
+        });
+        // 搜索按钮点击事件
+        $('#btnSearchByName').click(function () {
+            var value = $('#edtSearch').val();
+            ins1("","dict_name",value);
+        });
+
+
+        // 树形渲染
+        var dictTree = dtree.render({
+            elem: '#ltTree',
+            url: "/titansrsda/cadretree",
+            // type: 'all',
+           // initLevel: '1'//默认展开层级，当该值大于level时，则会展开树的节点，直到不大于当前待展开节点的level
+            //dot: false,
+            initLevel: 1,
+
+            skin: "zdy"  // 自定义风格
+            //request:{nodeId:"0"}//自定义参数，组件进行参数拼接时，会将该属性的串拼接到url,然后传递到后台进行数据查询
+        });
+        // 树形点击事件
+        dtree.on('node("ltTree")', function (obj) {
+            var data = obj.param;
+
+            //layer.msg('你选择了：' + data.nodeId + '-' + data.context);
+            //table.reload('rtTable', {where: {nodeId: data.nodeId}});
+            ins1(data.nodeId,"","");
+        });
+
+
+
+
+
+        function deleteDictionary(data){
+            var postdata = {"Ids":data};
+            if(data.constructor==Array||data instanceof Array){
+                $.post(
+                    "delete",
+                    postdata,
+                    function(result){
+                        if (result.code == 200) {
+                            top.layer.msg(result.msg, {icon: 1});
+                            table.reload('rtTable')&&dictTree.menubarMethod().refreshTree();
+                        } else {
+                            top.layer.msg(result.msg, {icon: 2});
+                        }
+                    },"json"
+                );
+            }
+        }
+
+
+    });
+
+
+</script>
+</body>
+</html>

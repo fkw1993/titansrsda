@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DatasourceManager xmlVersion="20120529" releaseVersion="7.0.0"> 
+  <ConnectionMap> 
+    <Connection name="connection" class="com.fr.data.impl.JDBCDatabaseConnection"> 
+      <DatabaseAttr/>  
+      <JDBCDatabaseAttr url="jdbc:mysql://127.0.0.1:3306/titansrsda?serverTimezone=UTC" driver="com.mysql.cj.jdbc.Driver" user="bb" password="___0041003d00550062000500a6005f00720061" encryptPassword="true"> 
+        <DBCPAttr/> 
+      </JDBCDatabaseAttr> 
+    </Connection> 
+  </ConnectionMap> 
+</DatasourceManager>

@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120529" releaseVersion="7.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[connection]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[select *  from t_da_transferform]]></Query>
+</TableData>
+<TableData name="ds2" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[connection]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[select count(*)  as count from t_da_transferform]]></Query>
+</TableData>
+<TableData name="ds3" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[connection]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[select * from t_da_transferform limit 1]]></Query>
+</TableData>
+</TableDataMap>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[723900,723900,723900,723900,1066800,2095500,723900,1181100,1143000,723900,723900,723900,723900,723900,723900,723900,723900,1143000,723900,723900,723900,723900,723900,723900,647700,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2819400,2971800,2743200,2743200,5029200,2514600,2438400,3390900,0,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="1" cs="8" rs="2" s="0">
+<O>
+<![CDATA[干部人事档案材料转递单]]></O>
+<Expand/>
+</C>
+<C c="6" r="4">
+<O>
+<![CDATA[        ]]></O>
+<Expand/>
+</C>
+<C c="7" r="4">
+<Expand/>
+</C>
+<C c="0" r="5" cs="2" s="1">
+<O>
+<![CDATA[_____________________：]]></O>
+<Expand/>
+</C>
+<C c="2" r="5" s="2">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+<C c="3" r="5" s="2">
+<Expand/>
+</C>
+<C c="4" r="5" s="2">
+<Expand/>
+</C>
+<C c="5" r="5" s="2">
+<Expand/>
+</C>
+<C c="6" r="5" s="2">
+<Expand/>
+</C>
+<C c="7" r="5" s="3">
+<Expand/>
+</C>
+<C c="0" r="6" cs="8" rs="2" s="4">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[="         兹将 "+I8+" 等 " +I7+ " 名同志的档案材料转去，请按档案目录清点查收，并将回执及时退回。 "]]></Attributes>
+</O>
+<Expand/>
+</C>
+<C c="8" r="6">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="count"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand/>
+</C>
+<C c="8" r="7">
+<O t="DSColumn">
+<Attributes dsName="ds3" columnName="WG01"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand/>
+</C>
+<C c="0" r="8" s="5">
+<Expand/>
+</C>
+<C c="1" r="8">
+<O>
+<![CDATA[发件人签名：]]></O>
+<Expand/>
+</C>
+<C c="2" r="8">
+<Expand/>
+</C>
+<C c="3" r="8">
+<Expand/>
+</C>
+<C c="4" r="8">
+<Expand/>
+</C>
+<C c="5" r="8" cs="3" s="6">
+<O>
+<![CDATA[发件机关盖章：]]></O>
+<Expand/>
+</C>
+<C c="0" r="9" s="7">
+<Expand/>
+</C>
+<C c="1" r="9" s="8">
+<Expand/>
+</C>
+<C c="2" r="9" s="8">
+<Expand/>
+</C>
+<C c="3" r="9" s="8">
+<Expand/>
+</C>
+<C c="4" r="9" s="8">
+<Expand/>
+</C>
+<C c="5" r="9" s="8">
+<Expand/>
+</C>
+<C c="6" r="9" cs="2" s="6">
+<O>
+<![CDATA[ 年    月     日]]></O>
+<Expand/>
+</C>
+<C c="0" r="10" rs="2" s="9">
+<O>
+<![CDATA[姓名]]></O>
+<Expand/>
+</C>
+<C c="1" r="10" cs="2" rs="2" s="9">
+<O>
+<![CDATA[单位及职务]]></O>
+<Expand/>
+</C>
+<C c="3" r="10" cs="2" rs="2" s="9">
+<O>
+<![CDATA[转递原因]]></O>
+<Expand/>
+</C>
+<C c="5" r="10" rs="2" s="9">
+<O>
+<![CDATA[正本（卷）]]></O>
+<Expand/>
+</C>
+<C c="6" r="10" rs="2" s="9">
+<O>
+<![CDATA[副本（卷）]]></O>
+<Expand/>
+</C>
+<C c="7" r="10" rs="2" s="9">
+<O>
+<![CDATA[档案材料（份）]]></O>
+<Expand/>
+</C>
+<C c="0" r="12" rs="2" s="9">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="WG01"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="1" r="12" cs="2" rs="2" s="9">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="WG06"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="12" cs="2" rs="2" s="9">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="WG11"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="5" r="12" rs="2" s="9">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="WG09"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="6" r="12" rs="2" s="9">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="WG10"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="7" r="12" rs="2" s="9">
+<Expand dir="0"/>
+</C>
+<C c="0" r="17" cs="8" s="10">
+<O>
+<![CDATA[- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ]]></O>
+<Expand/>
+</C>
+<C c="0" r="21" rs="10" s="11">
+<O>
+<![CDATA[回  执]]></O>
+<Expand/>
+</C>
+<C c="1" r="21" cs="2" rs="2" s="2">
+<O>
+<![CDATA[______________________：]]></O>
+<Expand/>
+</C>
+<C c="3" r="21" s="2">
+<Expand/>
+</C>
+<C c="4" r="21" s="2">
+<Expand/>
+</C>
+<C c="5" r="21" s="2">
+<Expand/>
+</C>
+<C c="6" r="21" s="2">
+<Expand/>
+</C>
+<C c="7" r="21" s="3">
+<Expand/>
+</C>
+<C c="3" r="22">
+<Expand/>
+</C>
+<C c="4" r="22">
+<Expand/>
+</C>
+<C c="5" r="22">
+<Expand/>
+</C>
+<C c="6" r="22">
+<Expand/>
+</C>
+<C c="7" r="22" s="6">
+<Expand/>
+</C>
+<C c="1" r="23" cs="7" rs="2" s="6">
+<O>
+<![CDATA[你处于______年____月____日 转来 ______字第______号____________等名同志的档案，正本______卷，副本______卷，材料共______份，已经全部收到，现将回执退回。]]></O>
+<Expand/>
+</C>
+<C c="1" r="25">
+<Expand/>
+</C>
+<C c="3" r="25">
+<Expand/>
+</C>
+<C c="4" r="25">
+<Expand/>
+</C>
+<C c="5" r="25">
+<Expand/>
+</C>
+<C c="6" r="25">
+<Expand/>
+</C>
+<C c="7" r="25" s="6">
+<Expand/>
+</C>
+<C c="1" r="26" cs="2" rs="2">
+<O>
+<![CDATA[收件人签名：]]></O>
+<Expand/>
+</C>
+<C c="3" r="26">
+<Expand/>
+</C>
+<C c="4" r="26">
+<Expand/>
+</C>
+<C c="5" r="26" cs="2" rs="2">
+<O>
+<![CDATA[收件机关盖章]]></O>
+<Expand/>
+</C>
+<C c="7" r="26" s="6">
+<Expand/>
+</C>
+<C c="3" r="27">
+<Expand/>
+</C>
+<C c="4" r="27">
+<Expand/>
+</C>
+<C c="7" r="27" s="6">
+<Expand/>
+</C>
+<C c="1" r="28">
+<Expand/>
+</C>
+<C c="2" r="28">
+<Expand/>
+</C>
+<C c="3" r="28">
+<Expand/>
+</C>
+<C c="4" r="28">
+<Expand/>
+</C>
+<C c="5" r="28">
+<Expand/>
+</C>
+<C c="6" r="28">
+<Expand/>
+</C>
+<C c="7" r="28" s="6">
+<Expand/>
+</C>
+<C c="1" r="29">
+<Expand/>
+</C>
+<C c="2" r="29">
+<Expand/>
+</C>
+<C c="3" r="29">
+<Expand/>
+</C>
+<C c="4" r="29" cs="3">
+<O>
+<![CDATA[               年        月       日]]></O>
+<Expand/>
+</C>
+<C c="7" r="29" s="6">
+<Expand/>
+</C>
+<C c="1" r="30" s="8">
+<Expand/>
+</C>
+<C c="2" r="30" s="8">
+<Expand/>
+</C>
+<C c="3" r="30" s="8">
+<Expand/>
+</C>
+<C c="4" r="30" s="8">
+<Expand/>
+</C>
+<C c="5" r="30" s="8">
+<Expand/>
+</C>
+<C c="6" r="30" s="8">
+<Expand/>
+</C>
+<C c="7" r="30" s="12">
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting/>
+</ReportSettings>
+<Header reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Header>
+<Footer reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Footer>
+</ReportAttrSet>
+</Report>
+<StyleList>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="1" size="120"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Left style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Left style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Bottom style="1"/>
+<Left style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Bottom style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-16776961"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" isVerticalText="1" textDirection="1" imageLayout="1">
+<FRFont name="SimSun" style="1" size="96"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Bottom style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+</StyleList>
+</WorkBook>
