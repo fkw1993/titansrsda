@@ -5,14 +5,14 @@ package com.titansoft.model.layui;
  * @Date: 2019/11/12 16:04
  */
 public class Status {
-    private String code;
+    private Integer code;
     private String message;
 
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
