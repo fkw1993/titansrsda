@@ -49,7 +49,7 @@ public class TitansrsdaApplication extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(TitansrsdaApplication.class);
     }
-
+//丢你
     //配置fineReport的servlet
     @Bean
     public ServletRegistrationBean fineReportServletBean() { // 一定要返回ServletRegistrationBean
